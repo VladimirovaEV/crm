@@ -92,3 +92,15 @@ const renderGoods = function(obj) {
 }
 renderGoods(goods);
 
+const btnAdd = document.querySelector('.panel__add-goods');
+const btnClose = document.querySelector('.modal__close');
+
+btnAdd.addEventListener('click', () => {
+  overlayElement.classList.add('active');
+});
+btnClose.addEventListener('click', () => {
+  overlayElement.classList.remove('active');
+});
+overlayElement.addEventListener('click', () => {
+  overlayElement.classList.remove('active');
+});
