@@ -101,6 +101,11 @@ btnAdd.addEventListener('click', () => {
 btnClose.addEventListener('click', () => {
   overlayElement.classList.remove('active');
 });
+modalForm.addEventListener('click', (e) => {
+  e.stopPropagation();
+});
 overlayElement.addEventListener('click', () => {
   overlayElement.classList.remove('active');
 });
+
+
