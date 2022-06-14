@@ -6,7 +6,11 @@ const descriptionCheck = document.querySelector('.vendor-code__wrapper');
 
 const overlayElement = document.querySelector('.overlay');
 overlayElement.classList.remove('active');
-
+const base = [];
+const btnAdd = document.querySelector('.panel__add-goods');
+const btnClose = document.querySelector('.modal__close');
+const btnDel = document.querySelector('.table__btn_del');
+const list = document.querySelector('.table__body');
 const goods = [
   {
     "id": 1,
@@ -68,12 +72,13 @@ const goods = [
 
 const createRow = function(item) {
   const trElement = document.createElement('tr');
-  trElement.innerHTML = `<td class="table__cell">${item.id}</td>
+  const tr = document.getElementsByTagName('tr');
+	let trCount = tr.length;
+  trElement.innerHTML = `<td class="table__cell">${trCount}</td>
                 <td class="table__cell table__cell_left table__cell_name" data-id=${item.id}>
-                  <span class="table__cell-id">id: ${item.id}</span>
-                  ${item.title}</td>
+                  <span class="table__cell-id">id: ${item.id}</span>${item.title}</td>
                 <td class="table__cell table__cell_left">${item.category}</td>
-                <td class="table__cell">${item.units}т</td>
+                <td class="table__cell">${item.units}</td>
                 <td class="table__cell">${item.count}</td>
                 <td class="table__cell">${item.price}</td>
                 <td class="table__cell">${item.count * item.price}</td>
@@ -84,28 +89,51 @@ const createRow = function(item) {
                 </td>`;
   return trElement;
 }
+
 const renderGoods = function(obj) {
   obj.forEach((item) => {
       const newElem = createRow(item);
       (document.querySelector('.table__body')).append(newElem);
+      base.push(item);
+      return newElem;
   });
 }
-renderGoods(goods);
 
-const btnAdd = document.querySelector('.panel__add-goods');
-const btnClose = document.querySelector('.modal__close');
+renderGoods(goods);
 
 btnAdd.addEventListener('click', () => {
   overlayElement.classList.add('active');
 });
-btnClose.addEventListener('click', () => {
-  overlayElement.classList.remove('active');
+
+overlayElement.addEventListener('click', (e) => {
+  const target = e.target;
+  if (target === overlayElement || target.closest('.modal__close')) {
+    overlayElement.classList.remove('active');
+  }
 });
-modalForm.addEventListener('click', (e) => {
-  e.stopPropagation();
-});
-overlayElement.addEventListener('click', () => {
-  overlayElement.classList.remove('active');
-});
+list.addEventListener('click', e => {
+      const target = e.target;
+      if (target.closest('.table__btn_del')) {
+        let parent = target.closest('tr');
+        // target.closest('tr').remove();
+        parent.remove();
+        let elem = parent.querySelector('.table__cell_name');
+        let elemForCheck = Array.from(elem.childNodes)[2].textContent;
+        base.forEach((item, i) => {
+        if (item.title === elemForCheck) {
+          let index = base.indexOf(item);
+          base.splice(index, 1);
+        }
+        console.log(base)
+      })
+      };
+
+    });
+
+
+
+
+
+
 
 
