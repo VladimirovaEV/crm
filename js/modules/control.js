@@ -11,7 +11,7 @@ const {
   modalTotalPrice,
   inputPrice,
   inputCount,
-  base,
+  base
 } = getElements;
 import {getRandomId} from './utils.js';
 import {createRow, addGoodPage, addGoodData} from './createElements.js';
@@ -86,6 +86,7 @@ const renderGoods = function(obj) {
     closeModal();
   })
 };
+
 modalCheckbox.addEventListener('click', () => {
   if (modalCheckbox.checked) {
     discountCount.disabled = false;
@@ -94,6 +95,14 @@ modalCheckbox.addEventListener('click', () => {
     discountCount.value = "";
   }
 });
+document.addEventListener('click', (e) => {
+  const target = e.target;
+  let attr = target.getAttribute('data-pic');
+  if (target.closest('.table__btn_pic')) {
+    open(attr, 'popup','width = 800, height = 600').moveTo(screen.width/2 - 400  , screen.height/2 - 300);
+  }
+})
+
 export default {
   openModal,
   closeModal,
