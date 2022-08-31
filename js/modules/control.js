@@ -11,7 +11,8 @@ const {
   modalTotalPrice,
   inputPrice,
   inputCount,
-  base
+  base,
+  file,
 } = getElements;
 import {getRandomId} from './utils.js';
 import {createRow, addGoodPage, addGoodData} from './createElements.js';

@@ -15,7 +15,8 @@ let modalTotalPrice = document.querySelector('.modal__total-price');
 const inputPrice = document.querySelector('input[name = "price"]');
 const inputCount = document.querySelector('input[name = "count"]');
 const base = [];
-
+const file = document.querySelector('.modal__file');
+const fieldSet = document.querySelector('.modal__fieldset');
 modalForm.name.required = true;
 modalForm.category.required = true;
 modalForm.description.required = true;
@@ -25,6 +26,16 @@ modalForm.discount_count.required = true;
 modalForm.count.required = true;
 modalForm.price.required = true;
 modalForm.total.required = true;
+
+const imgContainer = document.createElement('div');
+imgContainer.classList.add('image-container');
+const imgModal = document.createElement('img');
+imgModal.classList.add('preview');
+imgContainer.append(imgModal);
+fieldSet.append(imgContainer);
+const modalWarning = document.createElement('div');
+modalWarning.classList.add('image-text');
+modalWarning.textContent = 'Изображение не должно превышать размер 1 Мб';
 
 export default {
   modalTitle,
@@ -42,5 +53,10 @@ export default {
   modalTotalPrice,
   inputPrice,
   inputCount,
-  base
+  base,
+  file,
+  fieldSet,
+  imgModal,
+  imgContainer,
+  modalWarning,
 }

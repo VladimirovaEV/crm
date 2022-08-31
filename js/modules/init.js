@@ -5,7 +5,7 @@ const {
   formControl,
   renderGoods,
 } = control;
-
+import modalImg from './modalImg.js';
 export const init = () => {
   renderGoods(goods);
   modalControl();
@@ -74,3 +74,4 @@ export default {
   init,
   goods,
 };
+

@@ -143,7 +143,17 @@
   color: #FFFFFF;
   cursor: pointer;
 }
-
+.image-text {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  text-transform: uppercase;
+  padding: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: red;
+}
 .image-container {
   grid-area: file-add;
   position: relative;
@@ -153,7 +163,7 @@
   margin: 0 auto;
 }
 
-.image-container:hover:after {
+/* .image-container:hover:after {
   content: '';
   position: absolute;
   top: 50%;
@@ -174,7 +184,7 @@
   width: 35px;
   height: 1px;
   border: 1px solid black;
-}
+} */
 
 .modal__label_file:hover {
   background-color: #6E6893;
